@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+
+  "name": AI2BlockRescaler",
+  "description": "Rescales the block editing canvas of the App Inventor 2 by MIT to zoom in or out",
+  "version": "0.0.1",
+
+  "page_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/"
+  ]
+}
