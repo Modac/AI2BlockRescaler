@@ -5,7 +5,7 @@
   "description": "Rescales the block editing canvas of the App Inventor 2 by MIT to zoom in or out",
   "version": "0.0.1",
 
-  "browser_action": {
+  "page_action": {
     "default_icon": {
             "48": "icon/icon48.png" 
     },
@@ -31,6 +31,7 @@
   },
   
   "permissions": [
-    "activeTab"
+    "activeTab",
+	"declarativeContent"
   ]
 }
