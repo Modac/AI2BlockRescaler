@@ -1,17 +1,30 @@
 {
   "manifest_version": 2,
 
-  "name": AI2BlockRescaler",
+  "name": "AI2BlockRescaler",
   "description": "Rescales the block editing canvas of the App Inventor 2 by MIT to zoom in or out",
   "version": "0.0.1",
 
-  "page_action": {
+  "browser_action": {
     "default_icon": {
-            "48": "images/icon48.png" 
+            "48": "icon/icon48.png" 
     },
     "default_title": "AI2 Block Resizer",
-    "default_popup": "popup.html"
+    "default_popup": "src/popup.html"
   },
+  
+   "content_scripts": [
+    {
+      "matches": ["http://ai2.appinventor.mit.edu/*"],
+      "js": ["src/resize2.js"],
+	  "run_at": "document_idle"
+    },
+	
+    {
+      "js": ["src/mdl/material.min.js"],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ],
   
   "permissions": [
     "activeTab"
