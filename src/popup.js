@@ -5,6 +5,13 @@ document.addEventListener("load", function () {
 });
 */
 
+var port = chrome.extension.connect({name: "Sample Communication"});
+port.postMessage("getValue");
+port.onMessage.addListener(function(msg) {
+    document.getElementById('slider').MaterialSlider.change(Number(msg))
+	update()
+});
+
 document.getElementById('slider').addEventListener("input", update)
 
 function update(){
@@ -14,9 +21,9 @@ function update(){
 	//window.postMessage('{ type: "sliderValue", text: value }', "*");
 	
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-			chrome.tabs.sendMessage(tabs[0].id, { type: "sliderValue", text: value }, function(response) {
-			console.log(response.farewell);
-		});
+			chrome.tabs.sendMessage(tabs[0].id, { type: "sliderValue", text: value }, function(response) {});
 	});
-	console.log("Send: " + value)
+	//console.log("Send: " + value)
+	
+	port.postMessage(value)
 }
